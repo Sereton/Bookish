@@ -1,6 +1,9 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
-from django.urls import reverse
+from django.urls import reverse, resolve
+
+from .forms import CustomUserCreationForm
+from .views import SignUpPageView
 
 # Create your tests here.
 
@@ -47,4 +50,12 @@ class SignUpPageTests(TestCase):
         self.assertTemplateUsed(self.response,'signup.html')
         self.assertContains(self.response,"Sign up")
         self.assertNotContains(self.response,"not here")
+
+    def test_sign_up_form(self):
+        form = self.response.context.get('form')
+        self.assertIsInstance(form,CustomUserCreationForm)
+
+    def test_sign_up_view(self):
+        view = resolve('/accounts/signup/')
+        self.assertEqual(view.func.__name__,SignUpPageView.as_view().__name__)
 
