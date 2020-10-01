@@ -1,0 +1,4 @@
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans %}Hello from your favorite bookstore.Please confirm Your Sign Up{% endblocktrans %}
+{% endautoescape %}

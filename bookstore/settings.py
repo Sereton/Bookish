@@ -21,8 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'av0o72cy^@ipvr@6ijhp^f+lhxdeijpjr18gggk3!j@&_4ajv$'
-
+SECRET_KEY = os.environ.get('SECRET_KEY_DJANGO_BOOKSTORE')
+#'av0o72cy^@ipvr@6ijhp^f+lhxdeijpjr18gggk3!j@&_4ajv$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -174,3 +174,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STRIPE_TEST_PUBLISHABLE_KEY=os.environ.get('STRIPE_TEST_PUBLISHABLE_KEY')
 STRIPE_TEST_SECRET_KEY=os.environ.get('STRIPE_TEST_SECRET_KEY')
+
+DEFAULT_FROM_EMAIL = 'admin@seniordeveloper.com'
